@@ -1,0 +1,39 @@
+$faint-blue: #545F7D;
+$light-green: #39CDCC;
+
+.input-wrapper{
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    input{
+        outline: none;
+        border: 2px solid rgba($color: $faint-blue, $alpha: 0.15);
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+    label{
+        position: absolute;
+        right: 20px;
+        top: 30%;
+        color: $light-green;
+        cursor: pointer;
+    }
+}
+
+.button-wrapper{
+    width: 100%;
+    button{
+        outline: none;
+        border: none;
+        width: 100%;
+        background-color: $light-green;
+        padding: 15px;
+        color: white;
+        border-radius: 10px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+}
