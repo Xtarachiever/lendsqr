@@ -42,6 +42,10 @@ $faint-blue: #545F7D;
                     color: $faint-blue;
                 }
                 div{
+                    .input-wrapper{
+                        margin-top: 30px;
+                        margin-bottom: 30px;
+                    }
                     .forgot-text{
                         text-align: left;
                         color: $light-green;
