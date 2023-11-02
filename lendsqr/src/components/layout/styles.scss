@@ -63,6 +63,9 @@ $blue: #213F7D;
             // justify-content: space-between;  
         }
     }
+    .profile.mobile-view{
+        display: none;
+    }
 } 
 .sidebar-container{
     background-color: white;
@@ -101,6 +104,37 @@ $blue: #213F7D;
                 align-items: center;
                 svg{
                     margin-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .nav-wrapper{
+        .profile.desktop-view{
+            display: none;
+        }
+        .profile.mobile-view{
+            display: flex;
+            position: relative;
+            width: max-content;
+            .drop-down{
+                position: absolute;
+                background-color:#fff;
+                border: 2px solid rgba($blue, 0.06);
+                box-shadow: 0px 2px 4px rgba(black, 0.25);
+                width: 200px;
+                padding: 10px 20px;
+                right: 0;
+                top: 45px;
+                .close-button svg{
+                    right: 15px;
+                    top: 10px;
+                    position: absolute;
+                }
+                .dropdown-content{
+                    display: block;
                 }
             }
         }
