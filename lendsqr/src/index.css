@@ -1,3 +1,13 @@
 *{
   box-sizing: border-box;
+  font-family: 'AvenirNext';
 }
+@font-face {
+  font-family: 'AvenirNext';
+  src: url('./fonts/AvenirNextLTPro-Regular.otf') format('opentype'),
+       url('./fonts/AvenirNextLTPro-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+
+}
+

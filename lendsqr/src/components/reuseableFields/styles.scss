@@ -47,6 +47,10 @@ $blue: #213F7D;
     gap: 20px;
     box-shadow: 0px 10px 10px -5px rgba($faint-blue, 0.15);
     padding: 30px 10px;
+    padding-left: 30px;
+    background-color: white;
+    z-index: 10;
+    top: 0px;
     .search-div{
         position: relative;
         height: max-content;
@@ -63,8 +67,8 @@ $blue: #213F7D;
             right: 0px;
             top: 0px;
             height: 100%;
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
             svg{
                 color: white;
                 font-size: 1.3rem;
@@ -88,3 +92,45 @@ $blue: #213F7D;
         }
     }
 } 
+.sidebar-container{
+    background-color: white;
+    min-height: 100vh;
+    height: 100%;
+    padding-top: 110px;
+    box-shadow: 10px 10px 10px -5px rgba($faint-blue, 0.15);
+    width: 300px;
+    position: fixed;
+    z-index: 2;
+    left: 0px;
+    overflow-y: auto;
+    // color: rgba($faint-blue,0.15);
+    color: $faint-blue;
+    .nav-contents{
+        padding: 10px 0px;
+        .title{
+            text-align: left;
+            padding-left: 40px;
+            font-size: 14px;
+            color: $faint-blue;
+            font-weight: 600;
+        }
+        .nav-content{
+            display: flex;
+            padding-left: 40px;
+            cursor: pointer;
+            &:hover{
+                background-color: rgba($light-green, 0.15);
+                border-left: 4px solid $light-green;
+                color: $blue;
+            }
+            p{
+                padding-left: 20px;
+                display: flex;
+                align-items: center;
+                svg{
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
