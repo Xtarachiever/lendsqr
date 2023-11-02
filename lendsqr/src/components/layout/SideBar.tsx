@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './styles.scss';
-import { businesses, customers, settings } from './NavContent';
+import { businesses, customers, settings } from '../reuseableFields/NavContent';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 
 interface ISideBarProps {

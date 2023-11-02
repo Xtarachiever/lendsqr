@@ -37,109 +37,18 @@ $blue: #213F7D;
         cursor: pointer;
     }
 }
-.nav-wrapper{
-    position: fixed;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    color: $blue;
-    justify-content: space-between;
-    gap: 20px;
-    box-shadow: 0px 10px 10px -5px rgba($faint-blue, 0.15);
-    padding: 30px 10px;
-    padding-left: 30px;
-    background-color: white;
-    z-index: 10;
-    top: 0px;
-    .search-div{
-        position: relative;
-        height: max-content;
-        width: 40%;
-        min-width: 250px;
-        .input-wrapper{
-            width: 100%;
-        }
-        .search-button{
-            background-color: $light-green;
-            padding: 10px 20px;
-            width: 70px;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            height: 100%;
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-            svg{
-                color: white;
-                font-size: 1.3rem;
-            }
-        }
-    } 
-    .profile{
-        display: flex;
-        align-items: center;
-        width: 30%;
-        max-width: 300px;
-        justify-content: space-between;
-        .docs{
-            text-decoration: underline;
-        }
-        div{
-            display: flex;
-            align-items: center;
-            // width: 30%;
-            // justify-content: space-between;  
-        }
-    }
-} 
-.sidebar-container{
-    background-color: white;
-    min-height: 100vh;
-    height: 100%;
-    padding-top: 110px;
-    box-shadow: 10px 10px 10px -5px rgba($faint-blue, 0.15);
-    width: 300px;
-    position: fixed;
-    z-index: 2;
-    left: 0px;
-    overflow-y: auto;
-    // color: rgba($faint-blue,0.15);
-    color: $faint-blue;
-    .nav-contents{
-        padding: 10px 0px;
-        .title{
-            text-align: left;
-            padding-left: 40px;
-            font-size: 14px;
-            color: $faint-blue;
-            font-weight: 600;
-        }
-        .nav-content{
-            display: flex;
-            padding-left: 40px;
-            cursor: pointer;
-            &:hover{
-                background-color: rgba($light-green, 0.15);
-                border-left: 4px solid $light-green;
-                color: $blue;
-            }
-            p{
-                padding-left: 20px;
-                display: flex;
-                align-items: center;
-                svg{
-                    margin-left: 10px;
-                }
-            }
-        }
-    }
-}
 
 .card-wrapper{
-    border: 1px solid rgba($blue, 0.06);
+    border: 2px solid rgba($blue, 0.06);
     padding: 10px 20px;
     max-width: 220px;
-    box-shadow: 0px 2px 4px rgba(black, 0.25);
+    min-width: 120px;
+    background-color: #fff;
+    &:hover{
+        box-shadow: 0px 2px 4px rgba(black, 0.25);
+        transition: all 0.3s ease-in;
+        border: 1px solid rgba($blue, 0.06);
+    }
     .analytics{
         color: $blue;
         font-family: 'AvenirNextBold';

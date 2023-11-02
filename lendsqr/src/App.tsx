@@ -6,7 +6,7 @@ import Users from './components/dashboard/users/Users';
 
 function App() {
   return (
-    <div>
+    <div className='App'>
       <Routes>
          <Route element={<Login />} path='/login'/>
          <Route path="/dashboard/users" element={<Users/>} /> 

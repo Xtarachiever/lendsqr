@@ -10,6 +10,7 @@ const Users: React.FunctionComponent<IUsersProps> = (props) => {
   return (
     <Layout>
         <div className='users-wrapper'>
+            <p className='header'>Users</p>
             <div className='analytics-wrapper'>
                 <DashboardCard  title='USERS' analytics='2,453' imgUrl='/user-icon.svg'/>
                 <DashboardCard  title='ACTIVE USERS' analytics='2,453' imgUrl='/active-users-icon.svg'/>

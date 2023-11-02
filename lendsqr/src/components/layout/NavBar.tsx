@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TextInput from './TextInput';
+import TextInput from '../reuseableFields/TextInput';
 import { BsSearch } from 'react-icons/bs';
 import { IoIosNotificationsOutline } from 'react-icons/io';
 import { RiArrowDownSFill } from 'react-icons/ri';
@@ -18,11 +18,11 @@ const NavBar: React.FunctionComponent<INavBarProps> = (props) => {
                 <BsSearch />
             </div>
         </div>
-        <div className='profile'>
+        <div className='profile desktop-view'>
             <p className='docs'>Docs</p>
             <IoIosNotificationsOutline fontSize={'1.4rem'}/>
             <div>
-                <img src='' alt='profile'/>
+                <img src='/user-icon.svg' alt='profile'/>
                 <p>Adedeji <RiArrowDownSFill /></p>
             </div>
         </div>

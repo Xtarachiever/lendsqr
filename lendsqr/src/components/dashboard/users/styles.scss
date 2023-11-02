@@ -1,9 +1,14 @@
+$blue: #213F7D;
 .users-wrapper{
-    padding: 0px 10px;
+    padding: 20px 50px;
+    .header{
+        color: $blue;
+        text-align: left;
+
+    }
     .analytics-wrapper{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        justify-items: center;
         gap: 20px;
         .card-wrapper{
             width: 100%;
@@ -11,10 +16,11 @@
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
     .users-wrapper{
         .analytics-wrapper{
             grid-template-columns: 1fr 1fr;
+            // justify-items: center;
         }
     }
 }

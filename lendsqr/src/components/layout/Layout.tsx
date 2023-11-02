@@ -1,6 +1,6 @@
 import * as React from 'react';
-import NavBar from '../reuseableFields/NavBar';
-import SideBar from '../reuseableFields/SideBar';
+import NavBar from './NavBar';
+import SideBar from './SideBar';
 import './styles.scss';
 
 interface ILayoutProps {
