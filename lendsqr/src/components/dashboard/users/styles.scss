@@ -1,0 +1,20 @@
+.users-wrapper{
+    padding: 0px 10px;
+    .analytics-wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        justify-items: center;
+        gap: 20px;
+        .card-wrapper{
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .users-wrapper{
+        .analytics-wrapper{
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}

@@ -3,21 +3,22 @@ import NavBar from '../reuseableFields/NavBar';
 import SideBar from '../reuseableFields/SideBar';
 import './styles.scss';
 
-interface IDashboardProps {
+interface ILayoutProps {
+  children?: React.ReactNode;
 }
 
-const Dashboard: React.FunctionComponent<IDashboardProps> = (props) => {
+const Layout: React.FunctionComponent<ILayoutProps> = ({children}) => {
   return (
-    <div className='dashboard-wrapper'>
+    <div className='layout-wrapper'>
       <div>
         <NavBar />
         <SideBar />
       </div>
         <div className='body'>
-          <p>Body</p>
+          {children}
         </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default Layout;

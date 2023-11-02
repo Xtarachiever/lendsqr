@@ -134,3 +134,21 @@ $blue: #213F7D;
         }
     }
 }
+
+.card-wrapper{
+    border: 1px solid rgba($blue, 0.06);
+    padding: 10px 20px;
+    max-width: 220px;
+    box-shadow: 0px 2px 4px rgba(black, 0.25);
+    .analytics{
+        color: $blue;
+        font-family: 'AvenirNextBold';
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .title{
+        color: $faint-blue;
+        font-size: 12px;
+        font-weight: 600;
+    }
+}
