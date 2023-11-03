@@ -61,3 +61,9 @@ $blue: #213F7D;
         font-weight: 600;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .card-wrapper{
+        max-width: none;
+    }
+}

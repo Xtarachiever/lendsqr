@@ -1,16 +1,37 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import './styles.scss';
 import { businesses, customers, settings } from '../reuseableFields/NavContent';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
+import { FaArrowRightArrowLeft } from 'react-icons/fa6';
 
 interface ISideBarProps {
 }
 
 const SideBar: React.FunctionComponent<ISideBarProps> = (props) => {
+  const [switched, setSwitched] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false)
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 760); // Adjust the width threshold as needed
+    };
+
+    checkScreenSize(); // Initial check
+
+    // Add event listener for window resize
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => {
+      // Remove event listener when the component unmounts
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, []);
+
   return (
     <div className='sidebar-container'>
+      <div className={`desktop-view ${(!isMobile && switched) || (!isMobile && !switched) || (isMobile && switched) ? 'active' : 'inactive'}`}>
         <div className='nav-contents'>
-          <div className='nav-content'>
+          <div className='nav-content' onClick={()=>setSwitched(false)}>
             <img src='/briefcase.svg' alt='briefcase'/>
             <p>Switch Organization <MdOutlineKeyboardArrowDown fontSize={'1.2rem'}/></p>
           </div>
@@ -52,6 +73,44 @@ const SideBar: React.FunctionComponent<ISideBarProps> = (props) => {
             ))
           }
         </div>
+      </div>
+      <div className={`mobile-view ${isMobile && !switched ? 'active' : 'inactive'}`}>
+        <div className='switch-icon' onClick={()=>setSwitched(true)}>
+          <FaArrowRightArrowLeft />
+        </div>
+        <div className='nav-contents'>
+          <div className='nav-content'>
+            <img src='/home.svg' alt='home'/>
+          </div>
+        </div>
+        <div className='nav-contents'>
+          {
+            customers.map(({name, icon})=>(
+              <div key={name} className='nav-content'>
+                {icon}
+              </div>
+            ))
+          }
+        </div>
+        <div className='nav-contents'>
+          {
+            businesses.map(({name, icon})=>(
+              <div key={name} className='nav-content'>
+                {icon}
+              </div>
+            ))
+          }
+        </div>
+        <div className='nav-contents'>
+          {
+            settings.map(({name, icon})=>(
+              <div key={name} className='nav-content'>
+                {icon}
+              </div>
+            ))
+          }
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,15 +1,25 @@
 $faint-blue: #545F7D;
 $light-green: #39CDCC;
 $blue: #213F7D;
+
 .layout-wrapper{
     position: relative;
     .body{
         padding-left: 300px;
         padding-top: 120px;
         min-height: 100vh;
+        .mobile-view.search-div{
+            display: none;
+        }
     }
 }
 
+.active{
+    display: block;
+}
+.inactive{
+    display: none;
+}
 .nav-wrapper{
     position: fixed;
     width: 100%;
@@ -73,44 +83,142 @@ $blue: #213F7D;
     height: 100%;
     padding-top: 110px;
     box-shadow: 10px 10px 10px -5px rgba($faint-blue, 0.15);
-    width: 300px;
     position: fixed;
     z-index: 2;
     left: 0px;
     overflow-y: auto;
     // color: rgba($faint-blue,0.15);
     color: $faint-blue;
-    .nav-contents{
-        padding: 10px 0px;
-        .title{
-            text-align: left;
-            padding-left: 40px;
-            font-size: 14px;
-            color: $faint-blue;
-            font-weight: 600;
-        }
-        .nav-content{
-            display: flex;
-            padding-left: 40px;
-            cursor: pointer;
-            &:hover{
-                background-color: rgba($light-green, 0.15);
-                border-left: 4px solid $light-green;
-                color: $blue;
+    .desktop-view{
+        width: 300px;
+        .nav-contents{
+            padding: 10px 0px;
+            .title{
+                text-align: left;
+                padding-left: 40px;
+                font-size: 14px;
+                color: $faint-blue;
+                font-weight: 600;
             }
-            p{
-                padding-left: 20px;
+            .nav-content{
                 display: flex;
-                align-items: center;
-                svg{
-                    margin-left: 10px;
+                padding-left: 40px;
+                cursor: pointer;
+                &:hover{
+                    background-color: rgba($light-green, 0.15);
+                    border-left: 4px solid $light-green;
+                    color: $blue;
                 }
+                p{
+                    padding-left: 20px;
+                    display: flex;
+                    align-items: center;
+                    svg{
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+    // .mobile-view{
+    //     display: none;
+    // }
+}
+
+@media screen and (max-width: 760px) {
+    .layout-wrapper{
+        .body{
+            padding-left: 80px;
+        }
+    }
+
+    .sidebar-container{
+        // .desktop-view{
+        //     display: none;
+        // }
+        .mobile-view{
+            // display: block;
+            padding: 0px 40px;
+            .nav-contents{
+                .nav-content{
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    img{
+                        width: 25px;
+                    }
+                }
+            }
+        }
+    }
+    .nav-wrapper{
+        .profile.desktop-view{
+            .user-name{
+                display: none;
             }
         }
     }
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width:650px) {
+    .nav-wrapper{
+        .logo{
+            width: 120px;
+        }
+    }
+}
+
+@media screen and (max-width:600px) {
+    .nav-wrapper{
+        .logo{
+            width: 120px;
+        }
+    }
+    .nav-wrapper{
+        .profile.desktop-view{
+            max-width: none;
+            width: 40%;
+        }
+        .desktop-view.search-div{
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width:500px) {
+    .layout-wrapper{
+        .body{
+            padding-left: 40px;
+            .mobile-view.search-div{
+                padding-left: 30px;
+                display: block;
+                position: relative;
+                .search-button{
+                    background-color: $light-green;
+                    padding: 10px 20px;
+                    width: 70px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    height: 100%;
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                    svg{
+                        color: white;
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+        }
+    }
+    .sidebar-container{
+        .mobile-view{
+            padding: 0px 20px;
+    }
+}
+    
+}
+
+@media screen and (max-width:400px) {
     .nav-wrapper{
         .profile.desktop-view{
             display: none;

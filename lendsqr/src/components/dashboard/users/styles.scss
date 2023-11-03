@@ -24,3 +24,12 @@ $blue: #213F7D;
         }
     }
 }
+
+@media screen and (max-width: 500px) {
+    .users-wrapper{
+        .analytics-wrapper{
+            grid-template-columns: 1fr;
+            // justify-items: center;
+        }
+    }
+}

@@ -14,8 +14,8 @@ const NavBar: React.FunctionComponent<INavBarProps> = (props) => {
     const [open, setOpen] = useState<boolean>(false)
   return (
     <div className='nav-wrapper'>
-        <img src='/Logo.svg' alt='Logo'/>
-        <div className='search-div'>
+        <img src='/Logo.svg' alt='Logo' className='logo'/>
+        <div className='desktop-view search-div'>
             <TextInput placeholder='Search for anything' name='search' id='search' type='text'/>
             <div className='search-button'>
                 <BsSearch />
@@ -26,7 +26,7 @@ const NavBar: React.FunctionComponent<INavBarProps> = (props) => {
             <IoIosNotificationsOutline fontSize={'1.4rem'}/>
             <div>
                 <img src='/user-icon.svg' alt='profile'/>
-                <p>Adedeji <RiArrowDownSFill /></p>
+                <p className='user-name'>Adedeji <RiArrowDownSFill /></p>
             </div>
         </div>
         <div className='profile mobile-view'>
