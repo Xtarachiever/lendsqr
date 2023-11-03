@@ -14,11 +14,16 @@ $blue: #213F7D;
     }
 }
 
-.active{
+.switched{
     display: block;
 }
-.inactive{
+.notswitched{
     display: none;
+}
+.active{
+    background-color: rgba($light-green, 0.15);
+    border-left: 4px solid $light-green;
+    color: $blue;
 }
 .nav-wrapper{
     position: fixed;

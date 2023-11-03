@@ -4,16 +4,28 @@ import './styles.scss';
 import { businesses, customers, settings } from '../reuseableFields/NavContent';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { FaArrowRightArrowLeft } from 'react-icons/fa6';
+import { useLocation } from 'react-router-dom';
 
 interface ISideBarProps {
 }
 
 const SideBar: React.FunctionComponent<ISideBarProps> = (props) => {
   const [switched, setSwitched] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false)
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [active, setActive] = useState<boolean>(false);
+
+  const route = useLocation();
+
+  const handleClick = () =>{
+    setActive(true)
+  }
+
   useEffect(() => {
+
+    handleClick();
+    
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 760); // Adjust the width threshold as needed
+      setIsMobile(window.innerWidth <= 760);
     };
 
     checkScreenSize(); // Initial check
@@ -29,7 +41,7 @@ const SideBar: React.FunctionComponent<ISideBarProps> = (props) => {
 
   return (
     <div className='sidebar-container'>
-      <div className={`desktop-view ${(!isMobile && switched) || (!isMobile && !switched) || (isMobile && switched) ? 'active' : 'inactive'}`}>
+      <div className={`desktop-view ${(!isMobile && switched) || (!isMobile && !switched) || (isMobile && switched) ? 'switched' : 'notswitched'}`}>
         <div className='nav-contents'>
           <div className='nav-content' onClick={()=>setSwitched(false)}>
             <img src='/briefcase.svg' alt='briefcase'/>
@@ -44,7 +56,7 @@ const SideBar: React.FunctionComponent<ISideBarProps> = (props) => {
           <p className='title'>CUSTOMERS</p>
           {
             customers.map(({name, icon})=>(
-              <div key={name} className='nav-content'>
+              <div key={name} className={`nav-content ${(active && route.pathname === `/dashboard/${name.toLowerCase()}`) && 'active'}`} onClick={handleClick}>
                 {icon}
                 <p>{name}</p>
               </div>
@@ -74,7 +86,7 @@ const SideBar: React.FunctionComponent<ISideBarProps> = (props) => {
           }
         </div>
       </div>
-      <div className={`mobile-view ${isMobile && !switched ? 'active' : 'inactive'}`}>
+      <div className={`mobile-view ${isMobile && !switched ? 'switched' : 'notswitched'}`}>
         <div className='switch-icon' onClick={()=>setSwitched(true)}>
           <FaArrowRightArrowLeft />
         </div>
