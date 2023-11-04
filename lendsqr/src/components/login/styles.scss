@@ -42,15 +42,18 @@ $faint-blue: #545F7D;
                     color: $faint-blue;
                 }
                 div{
+                    .alert{
+                        color: red;
+                    }
                     .input-wrapper{
                         margin-top: 30px;
-                        margin-bottom: 30px;
+                        margin-bottom: 10px;
                     }
                     .forgot-text{
                         text-align: left;
                         color: $light-green;
                         font-size: 15px;
-                        padding-bottom: 20px;
+                        padding: 20px 0px;
                     }
                 }
             }

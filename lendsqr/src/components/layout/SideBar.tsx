@@ -98,7 +98,7 @@ const SideBar: React.FunctionComponent<ISideBarProps> = (props) => {
         <div className='nav-contents'>
           {
             customers.map(({name, icon})=>(
-              <div key={name} className='nav-content'>
+              <div key={name} className={`nav-content ${(active && route.pathname === `/dashboard/${name.toLowerCase()}`) && 'active'}`} onClick={handleClick}>
                 {icon}
               </div>
             ))

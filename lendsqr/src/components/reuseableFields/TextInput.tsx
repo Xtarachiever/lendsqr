@@ -5,11 +5,16 @@ import { MouseEventHandler, useState } from 'react';
 interface ITextInputProps {
   placeholder: string;
   name: string;
-  id: string;
   type: string;
+  register?:any;
+  rules?:{
+    required?: boolean;
+    minLength?: number;
+    pattern?:RegExp;
+  };
 }
 
-const TextInput: React.FC<ITextInputProps> = ({ placeholder, name, id, type }) => {
+const TextInput: React.FC<ITextInputProps> = ({ placeholder, name, type, rules, register }) => {
   const [passwordType, setPasswordType] = useState<string>('password');
 
   const handleTypeSwitch: MouseEventHandler<HTMLLabelElement> = () => {
@@ -26,11 +31,11 @@ const TextInput: React.FC<ITextInputProps> = ({ placeholder, name, id, type }) =
       {
         name === 'password' ?
         <div>
-          <input type={passwordType} placeholder={placeholder} name={name} id={id} />
-          <label htmlFor={id} className='input-label' onClick={handleTypeSwitch}>SHOW</label>
+          <input type={passwordType} placeholder={placeholder} {...register(name, rules)}/>
+          <label htmlFor={name} className='input-label' onClick={handleTypeSwitch}>SHOW</label>
         </div>
         :
-        <input type={type} placeholder={placeholder} name={name} id={id} />
+        <input type={type} placeholder={placeholder} {...register(name, rules)}/>
       }
     </div>
   );

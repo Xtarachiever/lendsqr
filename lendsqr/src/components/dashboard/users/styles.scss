@@ -1,10 +1,10 @@
 $blue: #213F7D;
+$faint-blue: #545F7D;
 .users-wrapper{
     padding: 20px 50px;
     .header{
         color: $blue;
         text-align: left;
-
     }
     .analytics-wrapper{
         display: grid;
@@ -12,6 +12,33 @@ $blue: #213F7D;
         gap: 20px;
         .card-wrapper{
             width: 100%;
+        }
+    }
+    .table-wrapper{
+        margin: 40px 0px;
+        .popup-action{
+            position: relative;
+            cursor: pointer;
+            .popup{
+                background-color: white;
+                box-shadow: 0px 2px 20px rgba(black, 0.05);
+                width: 200px;
+                padding: 10px 20px;
+                color: $faint-blue;
+                border-radius: 5px;
+                position: absolute;
+                right: -20px;
+                top: 20px;
+                z-index: 2;
+                p{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    svg{
+                        margin-right: 20px;
+                    }
+                }
+            }
         }
     }
 }

@@ -1,0 +1,119 @@
+$faint-blue: #545F7D;
+$light-green: #39CDCC;
+$blue: #213F7D;
+.table-div{
+    background-color: white;
+    border: 1px solid rgba($blue, 0.06);
+    box-shadow: 0px 2px 20px rgba(black, 0.05);
+    overflow: scroll;
+    padding: 15px;
+    table{
+        border-collapse: collapse;
+        border-spacing: 20px;
+        width: 100%;
+        color: $faint-blue;
+        table-layout: fixed;
+        min-width: 760px;
+        th,td{
+            word-wrap: break-word; /* Wrap long words to prevent overflow */
+            overflow-wrap: break-word; /* Wrap long words for compatibility */
+            white-space: normal; /* Allow text to wrap within cells */    
+            padding: 10px;   
+        }
+        thead{
+            text-align: left;
+            tr{
+                font-size: 11px;
+                th{
+                    &:last-child{
+                        width: 40px;
+                    }
+                    cursor: pointer;
+                    .header{
+                        display: flex;
+                        align-items: center;
+                        span{
+                            margin-left: 5px;
+                        }
+                    }
+                    div{
+                        font-family: 'AvenirNextBold';
+                    }
+                }
+            }
+        }
+        tbody{
+            text-align: left;
+            tr{
+                &:not(:last-child){
+                    border-bottom: 2px solid rgba($color: $blue, $alpha: 0.1);
+                }
+                td{
+                    width: auto;
+                }
+            }
+        }
+    }
+    .pagination{
+        padding-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .select-wrapper{
+            display: flex;
+            align-items: center;
+            .select-page{
+                position: relative;
+                display: block;
+                width: fit-content;
+                margin: 0px 8px;
+                select{
+                    outline: none;
+                    background-color: rgba($blue, 0.10);
+                    border: none;
+                    padding: 10px;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    position: relative;
+                    width: 70px;
+                    border-radius: 5px;
+                }
+                &::after{
+                    content: '';
+                    background: url('../../../../public/dropdown.svg') no-repeat right center;
+                    background-size: 20px; /* Adjust the size of the image as needed */
+                    width: 20px; /* Width of the custom arrow */
+                    height: 20px; /* Height of the custom arrow */
+                    position: absolute;
+                    top: 5px;
+                    right: 10px;
+                    pointer-events: none;
+                }
+                .select-drop-down{
+                    position: absolute;
+                    right: 0px;
+                }
+            }
+        }
+        .pageIndex{
+            display: flex;
+            align-items: center;
+            button.pagesArr{
+                outline: none;
+                border: none;
+                margin: 0px 5px;
+                padding: 8px;
+            }
+            button.next,
+            button.prev{
+                border: none;
+                background-color: rgba($color: $blue, $alpha: 0.10);
+                width: 30px;
+                height: 30px;
+                border-radius: 5px;
+                margin: 0px 10px;
+            }
+        }
+    }
+}

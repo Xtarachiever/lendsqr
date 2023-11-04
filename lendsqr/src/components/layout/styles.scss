@@ -133,21 +133,18 @@ $blue: #213F7D;
 @media screen and (max-width: 760px) {
     .layout-wrapper{
         .body{
-            padding-left: 80px;
+            padding-left: 50px;
         }
     }
 
     .sidebar-container{
-        // .desktop-view{
-        //     display: none;
-        // }
         .mobile-view{
-            // display: block;
-            padding: 0px 40px;
+            width: 80px;
             .nav-contents{
                 .nav-content{
-                    margin-top: 10px;
-                    margin-bottom: 10px;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                    padding: 10px 0px;
                     img{
                         width: 25px;
                     }
@@ -215,12 +212,6 @@ $blue: #213F7D;
             }
         }
     }
-    .sidebar-container{
-        .mobile-view{
-            padding: 0px 20px;
-    }
-}
-    
 }
 
 @media screen and (max-width:400px) {

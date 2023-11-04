@@ -6,17 +6,18 @@ import { RiArrowDownSFill } from 'react-icons/ri';
 import { AiOutlineClose } from 'react-icons/ai';
 import './styles.scss';
 import { useState } from 'react';
-
+import { useForm } from 'react-hook-form';
 interface INavBarProps {
 }
 
 const NavBar: React.FunctionComponent<INavBarProps> = (props) => {
+    const { register } = useForm();
     const [open, setOpen] = useState<boolean>(false)
   return (
     <div className='nav-wrapper'>
         <img src='/Logo.svg' alt='Logo' className='logo'/>
         <div className='desktop-view search-div'>
-            <TextInput placeholder='Search for anything' name='search' id='search' type='text'/>
+            <TextInput placeholder='Search for anything' name='search' type='text' register={register}/>
             <div className='search-button'>
                 <BsSearch />
             </div>
