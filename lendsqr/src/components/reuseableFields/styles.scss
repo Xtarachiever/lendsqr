@@ -1,6 +1,8 @@
 $faint-blue: #545F7D;
 $light-green: #39CDCC;
 $blue: #213F7D;
+
+
 .input-wrapper{
     width: 100%;
     // margin-top: 30px;
@@ -25,16 +27,29 @@ $blue: #213F7D;
 
 .button-wrapper{
     width: 100%;
+    .green-button{
+        background-color: $light-green;
+    }
+    
+    .white-button{
+        background-color: inherit;
+        border: 1px solid $blue;
+        color: $blue;
+        font-family: 'AvenirNextBold';
+    }
     button{
         outline: none;
         border: none;
         width: 100%;
-        background-color: $light-green;
         padding: 15px;
         color: white;
         border-radius: 10px;
         font-size: 15px;
         cursor: pointer;
+        &:hover{
+            scale: 1.04;
+            transition: all .2s ease-in;
+        }
     }
 }
 
@@ -62,6 +77,40 @@ $blue: #213F7D;
         font-weight: 600;
     }
 }
+
+.select-div{
+    .title{
+        text-align: left;
+    }
+    .select-wrapper{
+        position: relative;
+        select{
+            width: 100%;
+            outline: none;
+            // border: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding: 15px;
+            border: 2px solid rgba($color: $faint-blue, $alpha: 0.15);
+            border-radius: 5px;
+            cursor: pointer;
+    
+        }
+        &::after{
+            content: '';
+            background: url('../../../public/dropdown.svg') no-repeat right center;
+            background-size: 20px; /* Adjust the size of the image as needed */
+            width: 20px; /* Width of the custom arrow */
+            height: 20px; /* Height of the custom arrow */
+            position: absolute;
+            top: 12px;
+            right: 10px;
+            pointer-events: none;
+        }
+    }
+}
+
 
 @media screen and (max-width: 500px) {
     .card-wrapper{

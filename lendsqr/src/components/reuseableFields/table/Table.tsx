@@ -3,10 +3,9 @@ import {
     getCoreRowModel,
     getFilteredRowModel,
     getPaginationRowModel,
-    getSortedRowModel,
     useReactTable,
   } from '@tanstack/react-table';
-  import { useEffect, useState } from 'react';
+  import { useEffect, useState, Dispatch, SetStateAction } from 'react';
   import './styles.scss';
   import { BsFilter } from 'react-icons/bs';
   import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
@@ -15,16 +14,18 @@ import {
     data: any[];
     columns: any[];
     rowsPerPage?:number;
+    setFilterPopUp:Dispatch<SetStateAction<boolean>>;
+    filterPopUp: boolean;
   }
   
-  export default function BasicTable({ data, columns, rowsPerPage = 5 }: BasicTableProps) {
+  export default function BasicTable({ data, columns, rowsPerPage = 5, setFilterPopUp, filterPopUp }: BasicTableProps) {
   
     const table = useReactTable({
       data,
       columns,
       getCoreRowModel: getCoreRowModel(),
       getPaginationRowModel: getPaginationRowModel(),
-      getSortedRowModel: getSortedRowModel(),
+      // getSortedRowModel: getSortedRowModel(),
       getFilteredRowModel: getFilteredRowModel(),
     });
 
@@ -72,17 +73,18 @@ if (noOfPages <= maxPagesToShow) {
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    onClick={header.column.getToggleSortingHandler()}
                   >
                     {
                       header.column.columnDef.header !== 'Actions' ?
                       header.isPlaceholder ? null : (
                         <div className='header'>
-                          {flexRender(
-                            header.column.columnDef.header as React.ReactNode,
-                            header.getContext()
-                          )}
-                          <span>
+                          <div onClick={header.column.getToggleSortingHandler()}>
+                            {flexRender(
+                              header.column.columnDef.header as React.ReactNode,
+                              header.getContext()
+                            )}
+                          </div>
+                          <span onClick={()=>setFilterPopUp(!filterPopUp)}>
                             <BsFilter fontSize={'1.5rem'}/>
                           </span>
                         </div>

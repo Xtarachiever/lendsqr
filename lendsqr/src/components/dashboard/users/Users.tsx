@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect } from 'react';
+import { useEffect, FormEvent } from 'react';
 import Layout from '../../layout/Layout';
 import DashboardCard from '../../reuseableFields/DashboardCard';
 import './styles.scss';
@@ -9,13 +9,30 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 import { BsEye } from 'react-icons/bs'
 import { FiUserX } from 'react-icons/fi';
 import { RiUserFollowLine } from 'react-icons/ri';
-
+import Select from '../../reuseableFields/Select';
+import TextInput from '../../reuseableFields/TextInput';
+import { useForm } from 'react-hook-form';
+import Button from '../../reuseableFields/Button';
 interface IUsersProps {
 }
 
+
+
 const Users: React.FunctionComponent<IUsersProps> = (props) => {
-  const [data, setData] = useState([]);
+  const {register, reset, handleSubmit} = useForm({
+    mode: 'all',
+    defaultValues: {
+        Organization: '',
+        username:'',
+        email:'',
+        date: '',
+        phoneNumber:'',
+        Status:''
+    },
+  });
+  const [data, setData] = useState<any>([]);
   const [activeRow, setActiveRow] = useState<string>('');
+  const [filterPopUp, setFilterPopUp] = useState<boolean>(false);
 
   const togglePopUp = (rowId:string) => {
     if (activeRow === rowId) {
@@ -106,6 +123,14 @@ const Users: React.FunctionComponent<IUsersProps> = (props) => {
 
     }
   ]
+const onSubmit = (data:any) =>{
+  // e.preventDefault();
+  console.log(data);
+
+  // return data
+}
+
+const organizations = ['Irorun', 'Lendsqr']
   return (
     <Layout>
         <div className='users-wrapper'>
@@ -117,7 +142,39 @@ const Users: React.FunctionComponent<IUsersProps> = (props) => {
                 <DashboardCard  title='USERS WITH SAVINGS' analytics='102,453' imgUrl='/users-saving.svg'/>
             </div>
             <div className='table-wrapper'>
-              <BasicTable data={data} columns={columns} rowsPerPage={10}/>
+              <BasicTable data={data} columns={columns} rowsPerPage={10} setFilterPopUp={setFilterPopUp} filterPopUp={filterPopUp}/>
+              {
+                filterPopUp ?
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className='filter-wrapper'>
+                    <div className='filter-div'>
+                      <Select defaultValue='Select' value='' values={organizations} name='Organization' register={register}/>
+                      <div>
+                        <p>Username</p>
+                        <TextInput register={register} placeholder='User' type='text' name='username'/>
+                      </div>
+                      <div>
+                        <p>Email</p>
+                        <TextInput register={register} placeholder='Email' type='text' name='email'/>
+                      </div>
+                      <div>
+                        <p>Date</p>
+                        <TextInput register={register} placeholder='Date' type='date' name='date'/>
+                      </div>
+                      <div>
+                        <p>Phone Number</p>
+                        <TextInput register={register} placeholder='Phone Number' type='text' name='phoneNumber'/>
+                      </div>
+                      <Select defaultValue='Select' values={data[0]?.statuses} value='Status' name='Status' register={register}/>
+                      <div className='buttons'>
+                        <Button name='Reset' type='button' color='white' onClick={()=>reset()} />
+                        <Button name='Filter' type='submit'/>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                : <></>
+              }
             </div>
         </div>
     </Layout>

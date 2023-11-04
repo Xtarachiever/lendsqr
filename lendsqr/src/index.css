@@ -11,8 +11,8 @@
 }
 
 @font-face {
-  font-family: 'AvenirNextBold'; /* Use a different font-family name for the bold font */
+  font-family: 'AvenirNextBold';
   src: url('./fonts/AvenirNextLTPro-Bold.otf') format('opentype');
-  font-weight: bold; /* Set font-weight to 'bold' */
+  font-weight: bold; 
   font-style: normal;
 }

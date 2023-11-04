@@ -78,6 +78,7 @@ $blue: #213F7D;
                     position: relative;
                     width: 70px;
                     border-radius: 5px;
+                    cursor: pointer;
                 }
                 &::after{
                     content: '';
@@ -86,7 +87,7 @@ $blue: #213F7D;
                     width: 20px; /* Width of the custom arrow */
                     height: 20px; /* Height of the custom arrow */
                     position: absolute;
-                    top: 5px;
+                    top: 7px;
                     right: 10px;
                     pointer-events: none;
                 }
@@ -104,6 +105,7 @@ $blue: #213F7D;
                 border: none;
                 margin: 0px 5px;
                 padding: 8px;
+                cursor: pointer;
             }
             button.next,
             button.prev{
@@ -113,6 +115,7 @@ $blue: #213F7D;
                 height: 30px;
                 border-radius: 5px;
                 margin: 0px 10px;
+                cursor: pointer;
             }
         }
     }
