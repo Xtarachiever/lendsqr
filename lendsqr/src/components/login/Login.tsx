@@ -26,9 +26,9 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
       email: data?.email
     }
     storeUserDetailsInIndexedDB(email,'email','email');
-    setLoading(false)
     if (Object.keys(errors).length === 0) {
       navigate('/dashboard/users')
+      setLoading(false)
     }else{
       console.log('Something went wrong')
     }
@@ -53,10 +53,10 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
                 <TextInput type='text' placeholder='Email' name='email' register={register} rules={{ required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ }}/>
                 {
                   errors.email && (
-                    <>
+                    <div>
                       {errors.email.type === 'required' && <p className="alert">Email is required</p>}
                       {errors.email.type === 'pattern' && <p className="alert">Provide a valid email</p>}
-                    </>
+                    </div>
                   )
                 }
                 <TextInput type='text' placeholder='Password' name='password' register={register} rules={{required:true, minLength:4}}/>
@@ -69,7 +69,7 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
                   )
                 }
                 <p className='forgot-text'>FORGOT PASSWORD?</p>
-                <Button name={loading ? 'Loading ...' : 'LOG IN'} type='submit'/>
+                <Button name={loading ? 'Loading...' : 'LOG IN'} type='submit'/>
               </div>
             </form>
           </div>
