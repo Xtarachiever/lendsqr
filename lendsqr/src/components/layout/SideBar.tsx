@@ -4,7 +4,7 @@ import './styles.scss';
 import { businesses, customers, settings } from '../reuseableFields/NavContent';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { FaArrowRightArrowLeft } from 'react-icons/fa6';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface ISideBarProps {
 }
@@ -12,17 +12,25 @@ interface ISideBarProps {
 const SideBar: React.FunctionComponent<ISideBarProps> = (props) => {
   const [switched, setSwitched] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [active, setActive] = useState<boolean>(false);
+  const [active, setActive] = useState<string>('/dashboard/users');
 
-  const route = useLocation();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleClick = () =>{
-    setActive(true)
+  // console.log(route)
+
+  const handleClick = (pathname:string) =>{
+    setActive(`/dashboard/${pathname}`);
+    navigate(active)
   }
 
+
+  // useEffect(()=>{
+  //   navigate(active)
+  // },[active])
   useEffect(() => {
 
-    handleClick();
+    // navigate(active)
     
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth <= 760);
@@ -56,7 +64,7 @@ const SideBar: React.FunctionComponent<ISideBarProps> = (props) => {
           <p className='title'>CUSTOMERS</p>
           {
             customers.map(({name, icon})=>(
-              <div key={name} className={`nav-content ${(active && route.pathname === `/dashboard/${name.toLowerCase()}`) && 'active'}`} onClick={handleClick}>
+              <div key={name} className={`nav-content ${(active && location.pathname.includes(`/dashboard/${name.toLowerCase()}`)) && 'active'}`} onClick={()=>handleClick(name.toLowerCase())}>
                 {icon}
                 <p>{name}</p>
               </div>
@@ -98,7 +106,7 @@ const SideBar: React.FunctionComponent<ISideBarProps> = (props) => {
         <div className='nav-contents'>
           {
             customers.map(({name, icon})=>(
-              <div key={name} className={`nav-content ${(active && route.pathname === `/dashboard/${name.toLowerCase()}`) && 'active'}`} onClick={handleClick}>
+              <div key={name} className={`nav-content ${(active && location.pathname === `/dashboard/${name.toLowerCase()}`) && 'active'}`} onClick={()=>handleClick(name.toLowerCase())}>
                 {icon}
               </div>
             ))

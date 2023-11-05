@@ -1,7 +1,11 @@
 $blue: #213F7D;
 $faint-blue: #545F7D;
-.users-wrapper{
+$red: #E4033B;
+$light-green: #39CDCC;
+.app-wrapper{
     padding: 20px 50px;
+}
+.users-wrapper{
     .header{
         color: $blue;
         text-align: left;
@@ -35,8 +39,19 @@ $faint-blue: #545F7D;
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    &:hover{
+                        color: $blue;
+                        font-family: 'AvenirNextBold';
+                        transition: all .2s ease-in;
+                    }
+                    // &:hover{
+                    //     font-family: 'AvenirNextBold';
+                    // }
                     svg{
                         margin-right: 20px;
+                    }
+                    svg.eye{
+                        margin-right: 30px;
                     }
                 }
             }
@@ -63,6 +78,144 @@ $faint-blue: #545F7D;
                     margin: 20px 0px;
                 }
             }
+        }
+    }
+}
+
+.single-user-div{
+    .back{
+        text-align: left;
+        color: $faint-blue;
+        display: flex;
+        cursor: pointer;
+        svg{
+            margin-right: 5px;
+        }
+    }
+    .header{
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        color: $blue;
+        align-items: center;
+        .buttons{
+            display: flex;
+            justify-content: end;
+            width: 60%;
+            gap: 20px;
+            .button-wrapper{
+                width: inherit;
+                max-width: 150px;
+                button{
+                    font-size: 12px;
+                    padding: 10px;
+                }
+                .green-button{
+                    background-color: white;
+                    color: $red;
+                    border: 1px solid $red;
+                    font-family: "AvenirNextBold";
+                }
+                .white-button{
+                    background-color: white;
+                    color: $light-green;
+                    border: 2px solid $light-green;
+                }
+            }
+        }
+    }
+    .tab-wrapper{
+        .tab-header{
+            background-color: white;
+            border: 1px solid rgba($blue, 0.06);
+            box-shadow: 0px 2px 4px rgba(black, 0.15);
+            display: flex;
+            flex-direction: column;
+            color: $faint-blue;
+            padding: 20px;
+            padding-bottom: 0px;
+            .user-preview{
+                display: flex;
+                align-items: center;
+                text-align: left;
+                gap: 20px;
+                .user-icon{
+                    background-color: rgba($blue,0.2);
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .user-details{
+                    display: flex;
+                    align-items: start;
+                    color: $faint-blue;
+                    gap: 40px;
+                    .name, .price{
+                        color: $blue;
+                        font-family: 'AvenirNextBold';
+                    }
+                    .section{
+                        .code,
+                        .bank-details{
+                            font-size: 13px;
+                        }
+                    }
+                    .section2{
+                        position: relative;
+                        font-size: 13px;
+                        margin-top: 5px;
+                        .rating{
+                            svg{
+                                color: #E9B200;
+                            }
+                        }
+                        &::after,&::before{
+                            width: 1px;
+                            height: 50px;
+                            background-color: rgba($faint-blue,0.2);
+                            display: block;
+                            content: "";
+                            position: absolute;
+                            top: 55%;
+                            transform: translateY(-50%);
+                        }
+                        &::before{
+                            right: -15px;
+                        }
+                        &::after{
+                            left: -15px;
+                        }
+                    }
+                }
+            }
+            .tab-options{
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+                cursor: pointer;
+                .activeTab{
+                    width: 150px;
+                    color: $light-green;
+                    border-bottom: 3px solid $light-green;
+                }
+                p{
+                    margin-bottom: 0px;
+                    &:hover{
+                        color: $light-green;
+                        transition: all .2s ease-in-out;
+                    }
+                }
+            }
+        }
+        .tab-content-wrapper{
+            background-color: white;
+            border: 1px solid rgba($blue, 0.06);
+            box-shadow: 0px 2px 4px rgba(black, 0.15);
+            margin-top: 20px;
+            padding: 0px 20px;
         }
     }
 }

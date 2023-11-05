@@ -1,24 +1,27 @@
 import * as React from 'react';
-import { useEffect, FormEvent } from 'react';
+import {useContext } from 'react';
 import Layout from '../../layout/Layout';
 import DashboardCard from '../../reuseableFields/DashboardCard';
 import './styles.scss';
 import BasicTable from '../../reuseableFields/table/Table';
 import { useState } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { BsEye } from 'react-icons/bs'
+import { AiOutlineEye } from 'react-icons/ai'
 import { FiUserX } from 'react-icons/fi';
 import { RiUserFollowLine } from 'react-icons/ri';
 import Select from '../../reuseableFields/Select';
 import TextInput from '../../reuseableFields/TextInput';
 import { useForm } from 'react-hook-form';
 import Button from '../../reuseableFields/Button';
+import { useNavigate } from 'react-router-dom';
+import { userContext } from '../../../App';
 interface IUsersProps {
 }
 
-
-
 const Users: React.FunctionComponent<IUsersProps> = (props) => {
+  const data = useContext(userContext)
+  const navigate = useNavigate();
+  
   const {register, reset, handleSubmit} = useForm({
     mode: 'all',
     defaultValues: {
@@ -30,11 +33,12 @@ const Users: React.FunctionComponent<IUsersProps> = (props) => {
         Status:''
     },
   });
-  const [data, setData] = useState<any>([]);
+
   const [activeRow, setActiveRow] = useState<string>('');
   const [filterPopUp, setFilterPopUp] = useState<boolean>(false);
 
-  const togglePopUp = (rowId:string) => {
+  const togglePopUp = (rowId:string,row:any) => {
+    console.log(row.original)
     if (activeRow === rowId) {
       setActiveRow(''); // Close the popup if it's already open
     } else {
@@ -43,27 +47,9 @@ const Users: React.FunctionComponent<IUsersProps> = (props) => {
   };
 
 
-  const usersData = async () =>{
-    try{
-      await fetch('https://api.json-generator.com/templates/jWExjdifhpfn/data',{
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${process.env.REACT_APP_TOKEN}`,
-        },
-      })
-      .then(response => response.json())
-      .then(data => {
-        setData(data);
-      })
-
-    }catch(err){
-      console.log('An Error occured')
-    }
-  }
-
-  useEffect(()=>{
-    usersData();
-  },[])
+const viewUserDetails = (username:string) =>{
+  navigate(`/dashboard/users/${username}`)
+}
 
   const columns:{}[] = [
     {
@@ -110,10 +96,10 @@ const Users: React.FunctionComponent<IUsersProps> = (props) => {
       header:'Actions',
       cell: ({row}:any) => (
         <span id={row.id} className='popup-action'>
-          <BsThreeDotsVertical onClick={() => togglePopUp(row.id)} />
+          <BsThreeDotsVertical onClick={() => togglePopUp(row.id,row)} />
           {activeRow === row.id && (
             <div className='popup'>
-              <p><BsEye /> View Details</p>
+              <p onClick={()=>viewUserDetails(row.original.username)}><AiOutlineEye fontSize={'1.3rem'} className='eye'/> View Details</p>
               <p><FiUserX /> Blacklist User</p>
               <p><RiUserFollowLine /> Activate User</p>
             </div>
@@ -133,7 +119,7 @@ const onSubmit = (data:any) =>{
 const organizations = ['Irorun', 'Lendsqr']
   return (
     <Layout>
-        <div className='users-wrapper'>
+        <div className='app-wrapper users-wrapper'>
             <p className='header'>Users</p>
             <div className='analytics-wrapper'>
                 <DashboardCard  title='USERS' analytics='2,453' imgUrl='/user-icon.svg'/>

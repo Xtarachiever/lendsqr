@@ -1,0 +1,22 @@
+$faint-blue: #545F7D;
+$light-green: #39CDCC;
+$blue: #213F7D;
+.tab-wrapper{
+    .sections{
+        color: $faint-blue;
+        text-align: left;
+        font-size: 13px;
+        .section{
+            .details{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: start;
+                gap: 0px 60px;
+                padding: 10px 0px;
+            }
+            &:not(:last-child){
+                border-bottom: 1px solid rgba($blue,0.3);
+            }
+        }
+    }
+}
