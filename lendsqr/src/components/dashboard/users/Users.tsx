@@ -19,15 +19,23 @@ interface IUsersProps {
 
 
 const Users: React.FunctionComponent<IUsersProps> = (props) => {
+  const navigate = useNavigate();
   const data = useContext(userContext);
 
-  const [userData, setUserData] = useState(data)
+  const [userData, setUserData] = useState(data);
+  const [loading, setLoading] = useState(true);
+  const [activeRow, setActiveRow] = useState<string>('');
+  const [filterPopUp, setFilterPopUp] = useState<boolean>(true);
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setLoading(false)
+    },5000)
+  },[])
 
   useEffect(() => {
     setUserData(data);
   }, [data]);
-
-  const navigate = useNavigate();
   
   const {register, reset, handleSubmit} = useForm({
     mode: 'all',
@@ -50,8 +58,6 @@ const Users: React.FunctionComponent<IUsersProps> = (props) => {
     hour12: true,
   };
 
-  const [activeRow, setActiveRow] = useState<string>('');
-  const [filterPopUp, setFilterPopUp] = useState<boolean>(false);
 
   const togglePopUp = (rowId:string,row:any) => {
     if (activeRow === rowId) {
@@ -176,41 +182,43 @@ const organizations = ['Irorun', 'Lendsqr']
             {
               filteredData.length ?
               <div className='table-wrapper'>
-              <BasicTable data={filteredData} columns={columns} rowsPerPage={10} setFilterPopUp={setFilterPopUp} filterPopUp={filterPopUp}/>
-              {
-                filterPopUp ?
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className='filter-wrapper'>
-                    <div className='filter-div'>
-                      <Select defaultValue='Select' value='' values={organizations} name='Organization' register={register}/>
-                      <div>
-                        <p>Username</p>
-                        <TextInput register={register} placeholder='User' type='text' name='username'/>
-                      </div>
-                      <div>
-                        <p>Email</p>
-                        <TextInput register={register} placeholder='Email' type='text' name='email'/>
-                      </div>
-                      <div>
-                        <p>Date</p>
-                        <TextInput register={register} placeholder='Date' type='date' name='date'/>
-                      </div>
-                      <div>
-                        <p>Phone Number</p>
-                        <TextInput register={register} placeholder='Phone Number' type='text' name='phoneNumber'/>
-                      </div>
-                      <Select defaultValue='Select' values={filteredData[0]?.statuses} value='Status' name='Status' register={register}/>
-                      <div className='buttons'>
-                        <Button name='Reset' type='button' color='white' onClick={()=>reset()} />
-                        <Button name='Filter' type='submit'/>
+                <BasicTable data={filteredData} columns={columns} rowsPerPage={10} setFilterPopUp={setFilterPopUp} filterPopUp={filterPopUp}/>
+                {
+                  filterPopUp ?
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className='filter-wrapper'>
+                      <div className='filter-div'>
+                        <Select defaultValue='Select' value='' values={organizations} name='Organization' register={register}/>
+                        <div>
+                          <p>Username</p>
+                          <TextInput register={register} placeholder='User' type='text' name='username'/>
+                        </div>
+                        <div>
+                          <p>Email</p>
+                          <TextInput register={register} placeholder='Email' type='text' name='email'/>
+                        </div>
+                        <div>
+                          <p>Date</p>
+                          <TextInput register={register} placeholder='Date' type='date' name='date'/>
+                        </div>
+                        <div>
+                          <p>Phone Number</p>
+                          <TextInput register={register} placeholder='Phone Number' type='text' name='phoneNumber'/>
+                        </div>
+                        <Select defaultValue='Select' values={filteredData[0]?.statuses} value='Status' name='Status' register={register}/>
+                        <div className='buttons'>
+                          <Button name='Reset' type='button' color='white' onClick={()=>reset()} />
+                          <Button name='Filter' type='submit'/>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </form>
-                : <></>
-              }
-            </div>
-            : <></>
+                  </form>
+                  : <></>
+                }
+              </div> :
+              loading ?
+                <p>Loading ...</p>
+                : <div className='empty'>No data Available</div>
             }
         </div>
     </Layout>

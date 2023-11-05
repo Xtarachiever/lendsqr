@@ -94,7 +94,7 @@ const resultArray = createArrayOfTens();
                             )}
                           </div>
                           <span onClick={()=>setFilterPopUp(!filterPopUp)}>
-                            <BsFilter fontSize={'1.5rem'}/>
+                            <BsFilter fontSize={'1.5rem'} id='filter'/>
                           </span>
                         </div>
                       )
@@ -140,7 +140,7 @@ const resultArray = createArrayOfTens();
           <div className='pageIndex'>
             <button className='prev' disabled={!table.getCanPreviousPage()}
               onClick={() => table.previousPage()}>
-              <MdKeyboardArrowLeft fontSize={'1.5rem'}/>
+              <MdKeyboardArrowLeft fontSize={'1.5rem'} />
             </button>
             {
               pagesArr.map((value,index)=>(
