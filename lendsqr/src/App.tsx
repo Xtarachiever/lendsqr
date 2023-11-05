@@ -6,7 +6,7 @@ import Users from './components/dashboard/users/Users';
 import SingleUser from './components/dashboard/users/SingleUser';
 import { createContext } from 'react';
 import { retrieveUserDetailsFromIndexedDB } from './components/store/DataStorage';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import PageNotFound from './components/dashboard/pagenotfound/NotFound';
 
 export const userContext = createContext<any[]>([]);
@@ -63,11 +63,12 @@ interface IAuth {
   isAuthenticated:string;
 }
 const AuthWrapper:React.FC<IAuth> = ({isAuthenticated}) =>{
+  const location = useLocation();
   return(
     isAuthenticated !== '' ? 
     <Navigate to={'/dashboard/users'} replace/>
     :
-    <Navigate to={'/login'} replace />
+    <Navigate to={'/login'} replace state={{from: location}}/>
   )
 }
 export default App;
