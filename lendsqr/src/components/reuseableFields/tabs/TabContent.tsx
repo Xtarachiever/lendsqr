@@ -49,12 +49,12 @@ const UserTab: React.FunctionComponent<IUserTabProps> = ({activeTabName, usernam
     useEffect(() => {
 
       // Store user details in IndexedDB
-      storeUserDetailsInIndexedDB(userDetails);
+      storeUserDetailsInIndexedDB(userDetails,'userDetails','username');
   
       // Retrieve user details from IndexedDB
       const usernameToRetrieve = username; // Replace with the actual username
   
-      retrieveUserDetailsFromIndexedDB(usernameToRetrieve)
+      retrieveUserDetailsFromIndexedDB(usernameToRetrieve,'userDetails','username')
         .then((storedData) => {
           setRetrievedData(storedData);
         })

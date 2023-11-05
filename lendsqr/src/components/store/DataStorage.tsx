@@ -1,10 +1,10 @@
-export const openIndexedDB = () => {
+export const openIndexedDB = (name:string,keyPath:string) => {
   return new Promise<IDBDatabase>((resolve, reject) => {
-    const openRequest: IDBOpenDBRequest = indexedDB.open('UserDataDB', 1);
+    const openRequest: IDBOpenDBRequest = indexedDB.open('UserDataDB', 2);
 
     openRequest.onupgradeneeded = (event: IDBVersionChangeEvent) => {
       const db: IDBDatabase = (event.target as any).result;
-      db.createObjectStore('userDetails', { keyPath: 'username' });
+      db.createObjectStore(name, { keyPath: keyPath });
     };
 
     openRequest.onsuccess = (event: Event) => {
@@ -18,11 +18,11 @@ export const openIndexedDB = () => {
   });
 };
 
-export const storeUserDetailsInIndexedDB = (userDetails: any) => {
-  openIndexedDB()
+export const storeUserDetailsInIndexedDB = (userDetails: any, name:any, keyPath:string) => {
+  openIndexedDB(name,keyPath)
     .then((db) => {
-      const transaction = db.transaction('userDetails', 'readwrite');
-      const userDetailsStore = transaction.objectStore('userDetails');
+      const transaction = db.transaction(name, 'readwrite');
+      const userDetailsStore = transaction.objectStore(name);
       userDetailsStore.add(userDetails);
     })
     .catch((error) => {
@@ -30,12 +30,12 @@ export const storeUserDetailsInIndexedDB = (userDetails: any) => {
     });
 };
 
-export const retrieveUserDetailsFromIndexedDB = (username: string) => {
+export const retrieveUserDetailsFromIndexedDB = (username: string,name:string,keyPath:string) => {
   return new Promise<any>((resolve, reject) => {
-    openIndexedDB()
+    openIndexedDB(name,keyPath)
       .then((db) => {
-        const transaction = db.transaction('userDetails', 'readonly');
-        const userDetailsStore = transaction.objectStore('userDetails');
+        const transaction = db.transaction(name, 'readonly');
+        const userDetailsStore = transaction.objectStore(name);
 
         const getDetailsRequest = userDetailsStore.get(username);
 

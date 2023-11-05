@@ -47,7 +47,6 @@ const Users: React.FunctionComponent<IUsersProps> = (props) => {
   const [filterPopUp, setFilterPopUp] = useState<boolean>(false);
 
   const togglePopUp = (rowId:string,row:any) => {
-    console.log(row.original)
     if (activeRow === rowId) {
       setActiveRow(''); // Close the popup if it's already open
     } else {
@@ -141,7 +140,9 @@ const organizations = ['Irorun', 'Lendsqr']
                 <DashboardCard  title='USERS WITH LOANS' analytics='12,453' imgUrl='/users-loan.svg'/>
                 <DashboardCard  title='USERS WITH SAVINGS' analytics='102,453' imgUrl='/users-saving.svg'/>
             </div>
-            <div className='table-wrapper'>
+            {
+              data.length ?
+              <div className='table-wrapper'>
               <BasicTable data={data} columns={columns} rowsPerPage={10} setFilterPopUp={setFilterPopUp} filterPopUp={filterPopUp}/>
               {
                 filterPopUp ?
@@ -176,6 +177,8 @@ const organizations = ['Irorun', 'Lendsqr']
                 : <></>
               }
             </div>
+            : <></>
+            }
         </div>
     </Layout>
   );

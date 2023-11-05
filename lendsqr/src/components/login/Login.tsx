@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextInput from '../reuseableFields/TextInput';
 import Button from '../reuseableFields/Button';
 import './styles.scss';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
+import { retrieveUserDetailsFromIndexedDB, storeUserDetailsInIndexedDB } from '../store/DataStorage';
 
 interface IFormInput {
   email: string;
@@ -20,6 +21,10 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
 
   const onSubmit = (data:IFormInput) =>{
+    const email = {
+      email: data?.email
+    }
+    storeUserDetailsInIndexedDB(email,'email','email');
     if (Object.keys(errors).length === 0) {
       setMessage('Successful Login');
       navigate('/dashboard/users')
@@ -28,6 +33,8 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
     }
 
   }
+
+  // console.log(retrieveUserDetailsFromIndexedDB())
 
   return (
     <div className='wrapper'>
