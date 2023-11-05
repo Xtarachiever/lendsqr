@@ -34,6 +34,15 @@ const Users: React.FunctionComponent<IUsersProps> = (props) => {
     },
   });
 
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+  };
+
   const [activeRow, setActiveRow] = useState<string>('');
   const [filterPopUp, setFilterPopUp] = useState<boolean>(false);
 
@@ -78,6 +87,7 @@ const viewUserDetails = (username:string) =>{
     {
       header:'DATE JOINED',
       accessorKey: 'createdAt',
+      accessorFn: (row:any) => (new Date(row.createdAt).toLocaleString('en-US', options))
     },
     {
       header:'STATUS',
@@ -109,10 +119,14 @@ const viewUserDetails = (username:string) =>{
 
     }
   ]
-const onSubmit = (data:any) =>{
+const onSubmit = (formData:any) =>{
   // e.preventDefault();
-  console.log(data);
-
+  // const time = new Date(data.date).toLocaleString('en-US', options)
+  console.log(formData);
+  const found = formData.Organization !== '' ? data.filter(({ profile }: any) => profile.organization[0] === formData.Organization) : [];
+  const foundStatus = formData.Status !== '' ? data.filter(({ status }: any) => status[0] === formData.Organization) : [];
+  const foundPhone = formData.phoneNumber !== '' ? data.filter(({ profile }: any) => profile.phone === formData.phoneNumber) : [];
+  // console.log(foundPhone);
   // return data
 }
 
