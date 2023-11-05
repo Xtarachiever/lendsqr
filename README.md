@@ -16,6 +16,21 @@ The user dashboard provides detailed information about user loans, personal data
 - Organization Details: Explore various organizations.
 - Status Information: Check the status of lenders.
 
+##Objectives
+
+1. Build the 4 pages Login, Dashboard, User page, User details page
+2. The user pages should pull data from a mock api with 500 records
+3. Use local storage or indexedDB to store and retrieve user details on the user details page.
+4. The page must be mobile responsive
+5. Some details are intentionally left out of this instruction set. We feel the candidate should be able to spot and address them
+
+
+##Technologies
+1. ReactJs
+2. Sass
+3. Typescript
+
+   
 ## Usage
 
 To run this project locally, follow these steps:
@@ -31,6 +46,7 @@ git clone https://github.com/your/repository.git
  ```bash
  npm install
 ```
+
 
 3.
 ```bash
