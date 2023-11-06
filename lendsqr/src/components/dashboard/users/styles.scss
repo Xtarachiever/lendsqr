@@ -9,7 +9,7 @@ $light-green: #39CDCC;
     .header{
         color: $blue;
         text-align: left;
-        font-family: 'AvenirNextBold';
+        font-weight: 500;
     }
     .page-header{
         font-size: 20px;
@@ -45,7 +45,7 @@ $light-green: #39CDCC;
                     // justify-content: center;
                     &:hover{
                         color: $blue;
-                        font-family: 'AvenirNextBold';
+                        font-weight: 500;
                         transition: all .2s ease-in;
                     }
                     svg{
@@ -112,7 +112,7 @@ $light-green: #39CDCC;
                     background-color: white;
                     color: $red;
                     border: 1px solid $red;
-                    font-family: "AvenirNextBold";
+                    font-weight: 500;
                 }
                 .white-button{
                     background-color: white;
@@ -153,7 +153,7 @@ $light-green: #39CDCC;
                     gap: 40px;
                     .name, .price{
                         color: $blue;
-                        font-family: 'AvenirNextBold';
+                        font-weight: 500;
                     }
                     .section{
                         .code,

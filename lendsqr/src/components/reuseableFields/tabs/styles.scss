@@ -8,7 +8,7 @@ $blue: #213F7D;
         font-size: 13px;
         .section{
             .heading{
-                font-family: 'AvenirNextBold';
+                font-weight: 500;
             }
             .details{
                 display: flex;
@@ -17,7 +17,9 @@ $blue: #213F7D;
                 gap: 0px 60px;
                 padding: 10px 0px;
                 span{
-                    font-family: 'AvenirNextBold';
+                    font-weight: 500;
+                    display: block;
+                    margin-top: 5px;
                 }
             }
             &:not(:last-child){

@@ -35,7 +35,7 @@ $blue: #213F7D;
         background-color: inherit;
         border: 1px solid $blue;
         color: $blue;
-        font-family: 'AvenirNextBold';
+        font-weight: 500;
     }
     button{
         outline: none;
@@ -74,7 +74,7 @@ $blue: #213F7D;
     }
     .analytics{
         color: $blue;
-        font-family: 'AvenirNextBold';
+        font-weight: 500;
         font-weight: bold;
         font-size: 18px;
         margin: 0px;

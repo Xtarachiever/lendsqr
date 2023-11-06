@@ -5,7 +5,8 @@ import { HiOutlineArrowNarrowLeft } from 'react-icons/hi'
 import Button from '../../reuseableFields/Button';
 import { BiUser } from 'react-icons/bi';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
-import UserTab, { UserTabContent } from '../../reuseableFields/tabs/TabContent';
+import UserTab from '../../reuseableFields/tabs/TabContent';
+import { UserTabContent } from '../../reuseableFields/tabs/UserTabContent';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
