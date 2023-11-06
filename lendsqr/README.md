@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# lendsqr
+# User Dashboard for Lendsqr
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This project was created using SCSS, ReactJS, TypeScript, and additional frameworks such as react-icon. Its development was undertaken to meet the requirements for the position of a frontend developer at Lendsqr.
+The website serves as a straightforward user dashboard that presents a wide range of information, including user loan details and personal data. It offers insights into various aspects such as organizations, user status, and more, particularly for lenders. The data utilized for building this site was sourced from a JSON generator, which significantly facilitated the development process.
 
-In the project directory, you can run:
+In the development phase, IndexedDB was employed for multiple purposes. Initially, it was used to store the details of logged-in users, enabling authentication for access to other routes. Additionally, IndexedDB was utilized for storing individual user information, offering a versatile solution for data management.
 
-### `npm start`
+The user dashboard provides detailed information about user loans, personal data, organizations, and statuses of lenders. The data used in this project was obtained from JSON Generator, simplifying the development process.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- User Dashboard: View user loan details and personal information.
+- Organization Details: Explore various organizations.
+- Status Information: Check the status of lenders.
 
-### `npm test`
+##Objectives
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Build the 4 pages Login, Dashboard, User page, User details page
+2. The user pages should pull data from a mock api with 500 records
+3. Use local storage or indexedDB to store and retrieve user details on the user details page.
+4. The page must be mobile responsive
+5. Some details are intentionally left out of this instruction set. We feel the candidate should be able to spot and address them
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##Technologies
+1. ReactJs
+2. Sass
+3. Typescript
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run this project locally, follow these steps:
 
-### `npm run eject`
+1. Clone the repository:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+git clone https://github.com/your/repository.git
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. Install dependencies:
+ ```bash
+ npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+3.
+```bash
+ npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Open your browser and access the project at http://localhost:3000.
