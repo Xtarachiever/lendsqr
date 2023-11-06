@@ -59,6 +59,15 @@ if (noOfPages <= maxPagesToShow) {
   }
 }
 
+function createArrayOfTens(maxValue = 100) {
+  const result = [];
+  for (let i = 10; i <= maxValue; i += 10) {
+    result.push(i);
+  }
+  return result;
+}
+const resultArray = createArrayOfTens();
+
 
     useEffect(()=>{
       table.setPageSize(rowsPerPage);
@@ -119,7 +128,7 @@ if (noOfPages <= maxPagesToShow) {
                   table.setPageSize(Number(e.target.value))
                 }}
               >
-                {[10, 20, 30, 40, 50].map(pageSize => (
+                {resultArray.map(pageSize => (
                   <option key={pageSize} value={pageSize}>
                     {pageSize}
                   </option>

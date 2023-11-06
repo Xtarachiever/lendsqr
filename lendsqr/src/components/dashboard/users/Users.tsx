@@ -1,5 +1,4 @@
-import * as React from 'react';
-import {useContext } from 'react';
+import React, {useContext, useEffect } from 'react';
 import Layout from '../../layout/Layout';
 import DashboardCard from '../../reuseableFields/DashboardCard';
 import './styles.scss';
@@ -18,8 +17,16 @@ import { userContext } from '../../../App';
 interface IUsersProps {
 }
 
+
 const Users: React.FunctionComponent<IUsersProps> = (props) => {
-  const data = useContext(userContext)
+  const data = useContext(userContext);
+
+  const [userData, setUserData] = useState(data)
+
+  useEffect(() => {
+    setUserData(data);
+  }, [data]);
+
   const navigate = useNavigate();
   
   const {register, reset, handleSubmit} = useForm({
@@ -59,6 +66,9 @@ const viewUserDetails = (username:string) =>{
   navigate(`/dashboard/users/${username}`)
 }
 
+const formatDate = (date:string) =>{
+  return new Date(date).toLocaleString('en-US', options)
+}
   const columns:{}[] = [
     {
       header:'ORGANIZATION',
@@ -86,19 +96,14 @@ const viewUserDetails = (username:string) =>{
     {
       header:'DATE JOINED',
       accessorKey: 'createdAt',
-      accessorFn: (row:any) => (new Date(row.createdAt).toLocaleString('en-US', options))
+      accessorFn: (row:any) => (formatDate(row.createdAt))
     },
     {
       header:'STATUS',
-      accessorKey: 'status',
-      accessorFn: (row: any) => {
-        const status:string = typeof(JSON.stringify(row.status))
-        return(
-          <button id={row.id} className='status'>
-            {status}
-          </button>
-        )
-        // console.log(typeof(JSON.stringify(row.status[0])))
+      // accessorKey: 'status',
+      cell: ({row}:any) => {
+        const status = row.original.status[0]
+        return <button className={status}>{status.charAt(0).toUpperCase() + status.slice(1)}</button>
       }
     },
     {
@@ -118,22 +123,50 @@ const viewUserDetails = (username:string) =>{
 
     }
   ]
+
+let filteredData = [...userData]
 const onSubmit = (formData:any) =>{
   // e.preventDefault();
   // const time = new Date(data.date).toLocaleString('en-US', options)
-  console.log(formData);
-  const found = formData.Organization !== '' ? data.filter(({ profile }: any) => profile.organization[0] === formData.Organization) : [];
-  const foundStatus = formData.Status !== '' ? data.filter(({ status }: any) => status[0] === formData.Organization) : [];
-  const foundPhone = formData.phoneNumber !== '' ? data.filter(({ profile }: any) => profile.phone === formData.phoneNumber) : [];
-  // console.log(foundPhone);
-  // return data
+  if (formData.Organization !== '') {
+    filteredData = filteredData.filter(({ profile }: any) => profile.organization[0] === formData.Organization);
+  }
+  if (formData.Status !== '') {
+    filteredData = filteredData.filter(({ status }: any) => status[0] === formData.Status);
+  }
+
+  if (formData.username !== '') {
+    filteredData = filteredData.filter(({ username }: any) => username === formData.username);
+  }
+
+  if (formData.phoneNumber !== '') {
+    filteredData = filteredData.filter(({ profile }: any) => profile.phone === formData.phoneNumber);
+  }
+
+  if (formData.email !== '') {
+    filteredData = filteredData.filter(({ email }: any) => email === formData.email);
+  }
+
+  if (formData.email !== '') {
+    filteredData = filteredData.filter(({ email }: any) => email === formData.email);
+  }
+
+  if (formData.date !== '') {
+    filteredData = filteredData.filter(({ createdAt }: any) => formatDate(createdAt) === formatDate(formData.date));
+  }
+  
+  setUserData(filteredData);
+  setFilterPopUp(false)
+  return filteredData;
+
 }
+
 
 const organizations = ['Irorun', 'Lendsqr']
   return (
     <Layout>
         <div className='app-wrapper users-wrapper'>
-            <p className='header'>Users</p>
+            <p className='header page-header'>Users</p>
             <div className='analytics-wrapper'>
                 <DashboardCard  title='USERS' analytics='2,453' imgUrl='/user-icon.svg'/>
                 <DashboardCard  title='ACTIVE USERS' analytics='2,453' imgUrl='/active-users-icon.svg'/>
@@ -141,9 +174,9 @@ const organizations = ['Irorun', 'Lendsqr']
                 <DashboardCard  title='USERS WITH SAVINGS' analytics='102,453' imgUrl='/users-saving.svg'/>
             </div>
             {
-              data.length ?
+              filteredData.length ?
               <div className='table-wrapper'>
-              <BasicTable data={data} columns={columns} rowsPerPage={10} setFilterPopUp={setFilterPopUp} filterPopUp={filterPopUp}/>
+              <BasicTable data={filteredData} columns={columns} rowsPerPage={10} setFilterPopUp={setFilterPopUp} filterPopUp={filterPopUp}/>
               {
                 filterPopUp ?
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -166,7 +199,7 @@ const organizations = ['Irorun', 'Lendsqr']
                         <p>Phone Number</p>
                         <TextInput register={register} placeholder='Phone Number' type='text' name='phoneNumber'/>
                       </div>
-                      <Select defaultValue='Select' values={data[0]?.statuses} value='Status' name='Status' register={register}/>
+                      <Select defaultValue='Select' values={filteredData[0]?.statuses} value='Status' name='Status' register={register}/>
                       <div className='buttons'>
                         <Button name='Reset' type='button' color='white' onClick={()=>reset()} />
                         <Button name='Filter' type='submit'/>

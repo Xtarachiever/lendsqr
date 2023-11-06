@@ -1,6 +1,9 @@
 $faint-blue: #545F7D;
 $light-green: #39CDCC;
 $blue: #213F7D;
+$light-orange: #E9B200;
+$lemon-green: #39CD62;
+$danger-red: #E4033B;
 .table-div{
     background-color: white;
     border: 1px solid rgba($blue, 0.06);
@@ -23,7 +26,7 @@ $blue: #213F7D;
         thead{
             text-align: left;
             tr{
-                font-size: 11px;
+                font-size: 13px;
                 th{
                     &:last-child{
                         width: 40px;
@@ -32,6 +35,7 @@ $blue: #213F7D;
                     .header{
                         display: flex;
                         align-items: center;
+                        color: $faint-blue;
                         span{
                             margin-left: 5px;
                         }
@@ -50,6 +54,28 @@ $blue: #213F7D;
                 }
                 td{
                     width: auto;
+                    button{
+                        border: none;
+                        border-radius: 50px;
+                        outline: none;
+                        padding: 8px 20px;
+                    }
+                    .inactive{
+                        color: $faint-blue;
+                        background-color: rgba($color: $faint-blue, $alpha: 0.2);
+                    }
+                    .pending{
+                        color: $light-orange;
+                        background-color: rgba($color: $light-orange, $alpha: 0.2);
+                    }
+                    .blacklisted{
+                        color: $danger-red;
+                        background-color: rgba($color: $danger-red, $alpha: 0.2);
+                    }
+                    .active{
+                        color: $lemon-green;
+                        background-color: rgba($color: $lemon-green, $alpha: 0.4);
+                    }
                 }
             }
         }

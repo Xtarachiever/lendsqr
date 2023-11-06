@@ -40,7 +40,7 @@ const SingleUser: React.FunctionComponent<ISingleUserProps> = (props) => {
                 </div>
                 <div className='user-details'>
                   <div className='section section1'>
-                    <p className='name'>Grace Fish</p>
+                    <p className='name'>Grace Effiom</p>
                     <p className='code'>LSQFf587g90</p>
                   </div>
                   <div className='section section2'>

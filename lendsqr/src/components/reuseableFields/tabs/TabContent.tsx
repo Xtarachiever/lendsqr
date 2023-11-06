@@ -72,63 +72,63 @@ const UserTab: React.FunctionComponent<IUserTabProps> = ({activeTabName, usernam
         ?
         <div className='sections'>
         <div className='section section-1'>
-          <p>Personal Information</p>
+          <p className='heading'>Personal Information</p>
           <div className='details'>
-             <p>FULL NAME <br /> {retrievedData?.profile.name}</p>
-             <p>PHONE NUMBER <br /> {retrievedData?.profile.phone}</p>
-             <p>EMAIL ADDRESS <br /> {retrievedData?.email}</p>
-             <p>BVN <br /> {retrievedData?.profile.phone}</p>
-             <p>GENDER <br /> Female</p>
-             <p>CHILDREN <br /> None</p>
-             <p>TYPE OF RESIDENCE <br /> Parent's Apartment</p>
+             <p>FULL NAME <br /> <span>{retrievedData?.profile.name}</span></p>
+             <p>PHONE NUMBER <br /> <span>{retrievedData?.profile.phone}</span></p>
+             <p>EMAIL ADDRESS <br /> <span>{retrievedData?.email}</span></p>
+             <p>BVN <br /> <span>{retrievedData?.profile.phone}</span></p>
+             <p>GENDER <br /> <span>Female</span></p>
+             <p>CHILDREN <br /> <span>None</span></p>
+             <p>TYPE OF RESIDENCE <br /> <span>Parent's Apartment</span></p>
           </div>
         </div>
         <div className='section section-2'>
-          <p>Personal Information</p>
+          <p className='heading'>Education and Employment</p>
           <div className='details'>
-             <p>FULL NAME <br /> {retrievedData?.profile.name}</p>
-             <p>PHONE NUMBER <br /> {retrievedData?.profile.phone}</p>
-             <p>EMAIL ADDRESS <br /> {retrievedData?.email}</p>
-             <p>BVN <br /> {retrievedData?.profile.phone}</p>
-             <p>GENDER <br /> Female</p>
-             <p>CHILDREN <br /> None</p>
-             <p>TYPE OF RESIDENCE <br /> Parent's Apartment</p>
+             <p>FULL NAME <br /> <span>{retrievedData?.profile.name}</span></p>
+             <p>PHONE NUMBER <br /> <span>{retrievedData?.profile.phone}</span></p>
+             <p>EMAIL ADDRESS <br /> <span>{retrievedData?.email}</span></p>
+             <p>BVN <br /> <span>{retrievedData?.profile.phone}</span></p>
+             <p>GENDER <br /> <span>Female</span></p>
+             <p>CHILDREN <br /> <span>None</span></p>
+             <p>TYPE OF RESIDENCE <br /> <span>Parent's Apartment</span></p>
+          </div>
+        </div>
+        <div className='section section-3'>
+          <p className='heading'>Socials</p>
+          <div className='details'>
+             <p>FULL NAME <br /> <span>{retrievedData?.profile.name}</span></p>
+             <p>PHONE NUMBER <br /> <span>{retrievedData?.profile.phone}</span></p>
+             <p>EMAIL ADDRESS <br /> <span>{retrievedData?.email}</span></p>
+             <p>BVN <br /> <span>{retrievedData?.profile.phone}</span></p>
+             <p>GENDER <br /> <span>Female</span></p>
+             <p>CHILDREN <br /> <span>None</span></p>
+             <p>TYPE OF RESIDENCE <br /> <span>Parent's Apartment</span></p>
+          </div>
+        </div>
+        <div className='section section-4'>
+          <p className='heading'>Guarantor</p>
+          <div className='details'>
+             <p>FULL NAME <br /> <span>{retrievedData?.profile.name}</span></p>
+             <p>PHONE NUMBER <br /> <span>{retrievedData?.profile.phone}</span></p>
+             <p>EMAIL ADDRESS <br /> <span>{retrievedData?.email}</span></p>
+             <p>BVN <br /> <span>{retrievedData?.profile.phone}</span></p>
+             <p>GENDER <br /> <span>Female</span></p>
+             <p>CHILDREN <br /> <span>None</span></p>
+             <p>TYPE OF RESIDENCE <br /> <span>Parent's Apartment</span></p>
           </div>
         </div>
         <div className='section section-2'>
-          <p>Personal Information</p>
+          <p className='heading'>Personal Information</p>
           <div className='details'>
-             <p>FULL NAME <br /> {retrievedData?.profile.name}</p>
-             <p>PHONE NUMBER <br /> {retrievedData?.profile.phone}</p>
-             <p>EMAIL ADDRESS <br /> {retrievedData?.email}</p>
-             <p>BVN <br /> {retrievedData?.profile.phone}</p>
-             <p>GENDER <br /> Female</p>
-             <p>CHILDREN <br /> None</p>
-             <p>TYPE OF RESIDENCE <br /> Parent's Apartment</p>
-          </div>
-        </div>
-        <div className='section section-2'>
-          <p>Personal Information</p>
-          <div className='details'>
-             <p>FULL NAME <br /> {retrievedData?.profile.name}</p>
-             <p>PHONE NUMBER <br /> {retrievedData?.profile.phone}</p>
-             <p>EMAIL ADDRESS <br /> {retrievedData?.email}</p>
-             <p>BVN <br /> {retrievedData?.profile.phone}</p>
-             <p>GENDER <br /> Female</p>
-             <p>CHILDREN <br /> None</p>
-             <p>TYPE OF RESIDENCE <br /> Parent's Apartment</p>
-          </div>
-        </div>
-        <div className='section section-2'>
-          <p>Personal Information</p>
-          <div className='details'>
-             <p>FULL NAME <br /> {retrievedData?.profile.name}</p>
-             <p>PHONE NUMBER <br /> {retrievedData?.profile.phone}</p>
-             <p>EMAIL ADDRESS <br /> {retrievedData?.email}</p>
-             <p>BVN <br /> {retrievedData?.profile.phone}</p>
-             <p>GENDER <br /> Female</p>
-             <p>CHILDREN <br /> None</p>
-             <p>TYPE OF RESIDENCE <br /> Parent's Apartment</p>
+             <p>FULL NAME <br /> <span>{retrievedData?.profile.name}</span></p>
+             <p>PHONE NUMBER <br /> <span>{retrievedData?.profile.phone}</span></p>
+             <p>EMAIL ADDRESS <br /> <span>{retrievedData?.email}</span></p>
+             <p>BVN <br /> <span>{retrievedData?.profile.phone}</span></p>
+             <p>GENDER <br /> <span>Female</span></p>
+             <p>CHILDREN <br /> <span>None</span></p>
+             <p>TYPE OF RESIDENCE <br /> <span>Parent's Apartment</span></p>
           </div>
         </div>
       </div>

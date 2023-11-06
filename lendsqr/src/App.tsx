@@ -7,6 +7,7 @@ import SingleUser from './components/dashboard/users/SingleUser';
 import { createContext } from 'react';
 import { retrieveUserDetailsFromIndexedDB } from './components/store/DataStorage';
 import { Navigate } from 'react-router-dom';
+import PageNotFound from './components/dashboard/pagenotfound/NotFound';
 
 export const userContext = createContext<any[]>([]);
 
@@ -52,6 +53,7 @@ function App() {
           <Route element={<Login />} path='/login'/>
           <Route path="/dashboard/users" element={<Users/>} /> 
           <Route path="/dashboard/users/:username" element={<SingleUser/>} /> 
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
     </userContext.Provider>

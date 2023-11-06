@@ -7,12 +7,18 @@ $blue: #213F7D;
         text-align: left;
         font-size: 13px;
         .section{
+            .heading{
+                font-family: 'AvenirNextBold';
+            }
             .details{
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: start;
                 gap: 0px 60px;
                 padding: 10px 0px;
+                span{
+                    font-family: 'AvenirNextBold';
+                }
             }
             &:not(:last-child){
                 border-bottom: 1px solid rgba($blue,0.3);

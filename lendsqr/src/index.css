@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap');
+
 *{
   box-sizing: border-box;
-  font-family: 'AvenirNext', 'AvenirNextBold';
+}
+body{
+  font-family: 'Work Sans','AvenirNext', 'AvenirNextBold';
 }
 @font-face {
   font-family: 'AvenirNext';
@@ -12,6 +16,13 @@
 
 @font-face {
   font-family: 'AvenirNextBold';
+  src: url('./fonts/Metropolis-SemiBold.otf') format('opentype');
+  font-weight: bold; 
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AvenirExtraNextBold';
   src: url('./fonts/AvenirNextLTPro-Bold.otf') format('opentype');
   font-weight: bold; 
   font-style: normal;

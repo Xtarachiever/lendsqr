@@ -4,6 +4,7 @@ $faint-blue: #545F7D;
 .wrapper{
     height: 100vh;
     width: 100vw;
+    font-family: 'AvenirNext';
     // padding: 0px 60px;
     .content{
         display: flex;
@@ -36,7 +37,7 @@ $faint-blue: #545F7D;
                 .header{
                     color: $dark-blue;
                     font-size: 30px;
-                    font-weight: 700;
+                    font-family: 'AvenirNextBold';
                 }
                 span{
                     color: $faint-blue;
@@ -52,7 +53,7 @@ $faint-blue: #545F7D;
                     .forgot-text{
                         text-align: left;
                         color: $light-green;
-                        font-size: 15px;
+                        font-size: 14px;
                         padding: 20px 0px;
                     }
                 }
