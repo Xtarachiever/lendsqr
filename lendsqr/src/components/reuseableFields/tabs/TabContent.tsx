@@ -61,7 +61,7 @@ const UserTab: React.FunctionComponent<IUserTabProps> = ({activeTabName, usernam
         .catch((error) => {
           console.error('Error retrieving user details:', error);
         });
-    }, []);
+    }, [userDetails, username]);
   
     // console.log(retrievedData)
 
