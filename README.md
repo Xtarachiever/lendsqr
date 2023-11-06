@@ -8,7 +8,7 @@ The website serves as a straightforward user dashboard that presents a wide rang
 
 In the development phase, IndexedDB was employed for multiple purposes. Initially, it was used to store the details of logged-in users, enabling authentication for access to other routes. Additionally, IndexedDB was utilized for storing individual user information, offering a versatile solution for data management.
 
-The user dashboard provides detailed information about user loans, personal data, organizations, and statuses of lenders. The data used in this project was obtained from JSON Generator, simplifying the development process.
+The user dashboard provides detailed information about user loans, personal data, organizations, and statuses of lenders. The data used in this project was obtained from JSON Generator, simplifying the development process. Testing was carried out using react testing library (jest). The userdashboard and login components were tested.
 
 ## Features
 
@@ -29,6 +29,7 @@ The user dashboard provides detailed information about user loans, personal data
 1. ReactJs
 2. Sass
 3. Typescript
+4. React testing library (Jest)
 
    
 ## Usage
@@ -54,3 +55,4 @@ git clone https://github.com/your/repository.git
 ```
 
 Open your browser and access the project at http://localhost:3000.
+Link to the live url: https://esther-adeyemi-lendsqr-fe-test-a4xu8cwmq-xtarachiever.vercel.app/
