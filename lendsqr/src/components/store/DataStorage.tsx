@@ -1,12 +1,23 @@
 export const openIndexedDB = (name:string,keyPath:string) => {
   return new Promise<IDBDatabase>((resolve, reject) => {
-    const openRequest: IDBOpenDBRequest = indexedDB.open('UserDataDB', 2);
+    const openRequest: IDBOpenDBRequest = indexedDB.open('UserDataDB',2);
 
     openRequest.onupgradeneeded = (event: IDBVersionChangeEvent) => {
-      const db: IDBDatabase = (event.target as any).result;
-      db.createObjectStore(name, { keyPath: keyPath });
-    };
+      var db = openRequest.result;
+      if(event.oldVersion < 1){
 
+      }
+      if (event.oldVersion < 2) {
+        // version 1 -> 2 upgrade
+        db.createObjectStore("userDetails", { keyPath: "username"});
+        // ...
+      }
+      // const db: IDBDatabase = (event.target as any).result;
+      if (!db.objectStoreNames.contains(name)) {
+        db.createObjectStore(name, { keyPath: keyPath });
+      }
+    };
+    
     openRequest.onsuccess = (event: Event) => {
       const db: IDBDatabase = (event.target as any).result;
       resolve(db);
@@ -30,21 +41,20 @@ export const storeUserDetailsInIndexedDB = (userDetails: any, name:any, keyPath:
     });
 };
 
-export const retrieveUserDetailsFromIndexedDB = (username: string,name:string,keyPath:string) => {
+export const retrieveUserDetailsFromIndexedDB = (name:string,keyPath:string) => {
   return new Promise<any>((resolve, reject) => {
     openIndexedDB(name,keyPath)
       .then((db) => {
         const transaction = db.transaction(name, 'readonly');
         const userDetailsStore = transaction.objectStore(name);
-
-        const getDetailsRequest = userDetailsStore.get(username);
-
+        const getDetailsRequest = userDetailsStore.get(keyPath);
+        
         getDetailsRequest.onsuccess = () => {
           const storedUserDetails = getDetailsRequest.result;
           if (storedUserDetails) {
             resolve(storedUserDetails);
           } else {
-            reject(new Error('User details not found in IndexedDB.'));
+            reject(new Error('Details not found in IndexedDB.'));
           }
         };
 
@@ -53,7 +63,6 @@ export const retrieveUserDetailsFromIndexedDB = (username: string,name:string,ke
         };
       })
       .catch((error) => {
-        console.error('Error opening IndexedDB:', error);
         reject(error);
       });
   });

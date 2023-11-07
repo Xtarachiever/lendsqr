@@ -13,22 +13,20 @@ const UserTab: React.FunctionComponent<IUserTabProps> = ({activeTabName, usernam
     const [retrievedData, setRetrievedData] = useState<any>(null);
     const userDetails = data?.find((user) => user.username === username);
 
-    useEffect(() => {
-
-      // Store user details in IndexedDB
-      storeUserDetailsInIndexedDB(userDetails,'userDetails','username');
+  useEffect(()=>{
+    storeUserDetailsInIndexedDB(userDetails, 'userDetails', 'username');
+    const handleUserData = async () => {
+      try {
+        // Retrieve user details from IndexedDB
+        const storedData = await retrieveUserDetailsFromIndexedDB('userDetails', username);
+        setRetrievedData(storedData);
+      } catch (error) {
+        console.error('Error storing or retrieving user details:', error);
+      }
+    };
   
-      // Retrieve user details from IndexedDB
-      const usernameToRetrieve = username; // Replace with the actual username
-  
-      retrieveUserDetailsFromIndexedDB(usernameToRetrieve,'userDetails','username')
-        .then((storedData) => {
-          setRetrievedData(storedData);
-        })
-        .catch((error) => {
-          console.error('Error retrieving user details:', error);
-        });
-    }, [userDetails, username]);
+    handleUserData();
+  },[])
   
     // console.log(retrievedData)
 

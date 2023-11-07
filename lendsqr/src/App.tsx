@@ -16,13 +16,16 @@ function App() {
   const [isAuthenticated, setAuthenticated] = useState<string>('');
 
   useEffect(()=>{
-    retrieveUserDetailsFromIndexedDB('email','email','email')
-    .then((storedEmail) => {
-      setAuthenticated(storedEmail)
-    })
-    .catch((error) => {
-      console.error('Error retrieving user details:', error);
-    });
+    const handleInitDB = async () =>{
+      await retrieveUserDetailsFromIndexedDB('email','email')
+      .then((storedEmail) => {
+        setAuthenticated(storedEmail)
+      })
+      .catch((error) => {
+        console.error('Error login details:', error);
+      });
+    }
+    handleInitDB()
   },[])
   const usersData = async () =>{
     try{

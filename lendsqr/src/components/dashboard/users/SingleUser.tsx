@@ -57,7 +57,7 @@ const SingleUser: React.FunctionComponent<ISingleUserProps> = (props) => {
               <div className='tab-options'>
                 {
                   UserTabContent.map(({title,id})=>(
-                    <p onClick={()=>setTabName(title)} className={`${tabName === title ? 'activeTab' : ''}`}>{title}</p>
+                    <p onClick={()=>setTabName(title)} key={id} className={`${tabName === title ? 'activeTab' : ''}`}>{title}</p>
                   ))
                 }
               </div>

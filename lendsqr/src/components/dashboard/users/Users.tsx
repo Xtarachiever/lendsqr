@@ -25,7 +25,7 @@ const Users: React.FunctionComponent<IUsersProps> = (props) => {
   const [userData, setUserData] = useState(data);
   const [loading, setLoading] = useState(true);
   const [activeRow, setActiveRow] = useState<string>('');
-  const [filterPopUp, setFilterPopUp] = useState<boolean>(true);
+  const [filterPopUp, setFilterPopUp] = useState<boolean>(false);
 
   useEffect(()=>{
     setTimeout(()=>{
