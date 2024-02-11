@@ -1,0 +1,161 @@
+body{
+    margin: 0;
+    box-sizing: border-box;
+    background-color: teal;
+    color: white;
+    position: relative;
+    height: 100vh;
+}
+/* Modal Container */
+.modal-container{
+    height: 100vh;
+    z-index: 10;
+    position: relative;
+    width: 100%;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.modal-container .form-div{
+    background-color: white;
+    height: 60vh;
+    top: 100px;
+    position: absolute;
+    width: 60%;
+    transform: translateX(-50%);
+    left: 50%;
+}
+.modal-container .form-div .form-header{
+    color: teal;
+    text-align: center;
+    font-weight: 600;
+    font-size: 25px;
+}
+.modal-container .form-div form{
+    position: relative;
+    top: 20px;
+}
+.container{
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+.container .content{
+    width: 80%;
+    margin: auto;
+}
+.container .content select,
+.modal-container select{
+    width: 100%;
+    padding: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+
+}
+.modal-container .select-div,
+.modal-container .input,
+.modal-container .form-button{
+    width: 80%;
+    margin: 0 auto;
+}
+.container .content .select-div,
+.modal-container .select-div{
+    position: relative;
+    clear: both;
+    padding: 15px 0px;
+}
+.container .content select::-ms-expand{
+    display: none;
+}
+.container .content .select-div img,
+.modal-container .select-div img{
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    pointer-events: none;
+}
+.container .content .button-div{
+    float: right;
+}
+.container .content .button-div button{
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+.container .content .button-div button:hover{
+    scale: 1.02;
+    transition: .2s all ease-out;
+}
+.container .content .button-div img{
+    margin-left: 4px;
+}
+
+/* INPUT FIELD STYLING */
+.modal-container .select-div{
+    margin: 20px auto;
+}
+.container .content select,
+.modal-container select,
+.modal-container .input input{
+    border: none;
+    border: 2px solid #d8d8d8;
+    outline: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #535353;
+}
+.modal-container .input input{
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.modal-container button{
+    outline: none;
+    border: none;
+    padding:15px 25px;
+    background-color: #008080;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.modal-container .form-div .close-button{
+    position: absolute;
+    right: -30px;
+    top: -24px;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.display-modal{
+    display: block;
+}
+.close-modal{
+    display: none;
+}
+
+/* TODO content */
+.todo-content table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.todo-content thead tr,
+.todo-content .todo-tasks tr{
+    width: 100%;
+}
+/* .todo-content .todo-tasks .todo-task,
+.todo-content .todo-table-header{
+    display: flex;
+    justify-content: space-between;
+} */

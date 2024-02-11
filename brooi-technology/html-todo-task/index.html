@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <script>
+        const modalContainer = document.getElementById('modal-container').load("modal.html")
+    </script> -->
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h2>TODO List App</h2>
+            <div class="button-div" onclick="handleModalToggle()">
+                <button>Add Task <img width="25" height="25" src="https://img.icons8.com/windows/32/plus-math.png" alt="plus-math"/></button>
+            </div>
+            <div class="select-div">
+                <select id="status-field">
+                    <option value="All">All</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Ongoing">Ogoing</option>
+                    <option value="Todo">Todo</option>
+                </select>
+                <img width="25" height="25" src="https://img.icons8.com/ios-glyphs/30/000000/expand-arrow--v1.png" alt="expand-arrow--v1"/>
+            </div>
+            <div class="todo-content">
+                <div class="todo-table-header">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Task</th>
+                                <th>Status</th>
+                                <th>Edit</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody class="todo-tasks"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-container">
+        <div class="form-div">
+            <div class="close-button" onclick="handleModalToggle()">
+                <img width="24" height="24" src="https://img.icons8.com/material-sharp/24/000000/delete-sign.png" alt="delete-sign"/>
+            </div>
+            <h3 class="form-header">TODO List Form</h3>
+            <form id="todo-form">
+                <div class="input">
+                    <input value="" placeholder="Todo name" name="task" id="task"/>
+                </div>
+                <div class="select-div">
+                    <select name="status" id="status">
+                        <option disabled selected value="Status">Status</option>
+                        <option value="Todo">Todo</option>
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                    <img width="25" height="25" src="https://img.icons8.com/ios-glyphs/30/000000/expand-arrow--v1.png" alt="expand-arrow--v1"/>
+                </div>
+                <div class="form-button">
+                    <button type="submit" id="submit-btn" >
+                        Submit 
+                    </button>
+                    <button type="submit" id="edit-btn" onclick="handleEdit()">
+                        Edit Task 
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+</html>
